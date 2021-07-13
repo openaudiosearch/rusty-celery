@@ -452,7 +452,11 @@ impl Message {
                 "correlation_id": self.properties.correlation_id.clone(),
                 "reply_to": reply_to,
                 "delivery_tag": delivery_tag,
-                "body_encoding": "base64"
+                "body_encoding": "base64",
+                "delivery_info": {
+                    "exchange": "",
+                    "routing_key": "celery"
+                }
             }),
         });
         let res = serde_json::to_string(&msg_json_value)?;
